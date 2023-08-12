@@ -1,14 +1,13 @@
 package main
 
-// global variable
-var name = "Keegan"
+import "fmt"
 
 func main() {
-	// function scope variable
-	favoriteMusician := "Brad Mehldau"
-	approximateAge := 25 + 23
-	const info = "gmoat"
+	x := 4
+	y := 5
+	// Add is available because of the package main
+	ans := Add(x, y)
 
-	// no formatting and % at the end
-	print(favoriteMusician, approximateAge, info)
+	// use fmt to make the console log universal
+	fmt.Println(ans)
 }
