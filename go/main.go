@@ -2,6 +2,14 @@ package main
 
 import "fmt"
 
+func GetColors(color string) (string, int) {
+	if color == "blue" {
+		return "blue", 1
+	} else {
+		return "red", 2
+	}
+}
+
 func main() {
 	x := 4
 	y := 5
@@ -23,5 +31,11 @@ func main() {
 	// map
 	ids := map[string]int{"joe": 23, "bob": 22}
 	fmt.Println(ids)
+
+	// we can return more than one value with a function
+	// use the _ if a value being returned will not be used
+	// variable that are actually values, and they are copies
+	newColor, _ := GetColors("orange")
+	fmt.Println(newColor)
 
 }
