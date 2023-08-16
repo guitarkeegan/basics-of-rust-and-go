@@ -2,14 +2,24 @@ package main
 
 import "fmt"
 
-// * is a pointer to the value, otherwise it would just be a copy
-func turnClockBack(age *int) {
-	*age -= 1
+func WhatTimeIsIt(time *int) string {
+	if *time == 1 {
+		return "yay!!"
+	} else {
+		panic("the time can't be anything but 1!!!")
+	}
 }
 
 func main() {
-	age := 40
-	// & will give the address to the value in memory
-	turnClockBack(&age)
-	fmt.Printf("I am now %d!\n", age)
+	// defer will cause whatever follows to be called last in the
+	// function
+	// notice that the panic is printed after the WhatTimeIsIt(&clocky)
+	badTime := 34
+	defer WhatTimeIsIt(&badTime)
+
+	// panic will exit a program
+	clocky := 1
+	res := WhatTimeIsIt(&clocky)
+	fmt.Println(res)
+
 }
