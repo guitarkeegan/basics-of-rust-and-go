@@ -1,4 +1,4 @@
-package filereader
+package fileworker
 
 import "os"
 
