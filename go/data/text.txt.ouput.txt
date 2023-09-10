@@ -1,2 +1,0 @@
-Original: I am the contents of the file.
- Double Original: I am the contents of the file.
