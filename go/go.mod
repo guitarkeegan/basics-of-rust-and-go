@@ -1,3 +1,3 @@
-module reading.com/files
+module guitarkeegan.com/go
 
 go 1.20
