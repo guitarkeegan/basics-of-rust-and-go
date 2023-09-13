@@ -1,3 +1,3 @@
-module guitarkeegan.com/go
+module basicasofgo.com/andrust
 
 go 1.20

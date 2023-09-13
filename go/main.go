@@ -2,25 +2,20 @@ package main
 
 import (
 	"fmt"
-
-	"guitarkeegan.com/go/data"
-	d "guitarkeegan.com/go/data"
+	"time"
 )
 
+func printMessage(text string, channel chan string) {
+	for i := 0; i < 5; i++ {
+		fmt.Println(text)
+		time.Sleep(time.Millisecond * 800)
+	}
+	channel <- "done!"
+}
+
 func main() {
-	instructor := d.Instructor{Id: 110, LastName: "Mine"}
-	instructor.FirstName = "Joe"
-
-	instructor.GetDetails()
-
-	me := d.NewInstructor("G", "K")
-
-	fmt.Printf("%v", me)
-
-	goClass := data.Course{Id: 100, Name: "Go Class", Instructor: me}
-
-	about := goClass.String()
-
-	fmt.Printf("%v", about)
-
+	channel := make(chan string)
+	go printMessage("What is for dinnaaa????!", channel)
+	res := <-channel
+	fmt.Println(res)
 }
