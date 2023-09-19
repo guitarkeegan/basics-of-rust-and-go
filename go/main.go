@@ -2,29 +2,15 @@ package main
 
 import (
 	"fmt"
-	"sync"
-
-	"cryptomasters.com/go/api"
+	"net/http"
 )
 
 func main() {
-	currencies := []string{"BTC", "ETH", "SOL", "DOT"}
-	var wg sync.WaitGroup
-	for _, currency := range currencies {
-		wg.Add(1)
-		go func(currencyCode string) {
-			getCurrencyData(currencyCode)
-			wg.Done()
-		}(currency)
+	http.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("hello from go server"))
+	})
+	err := http.ListenAndServe(":3000", nil)
+	if err == nil {
+		fmt.Println("Error while opening the server")
 	}
-	wg.Wait()
-
-}
-
-func getCurrencyData(currency string) {
-	rate, err := api.GetRate(currency)
-	if err != nil {
-		fmt.Printf("error on get rate")
-	}
-	fmt.Printf("The current price of %s is: %.2f\n", rate.Currency, rate.Price)
 }
